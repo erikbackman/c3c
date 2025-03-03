@@ -7,15 +7,8 @@ def Nlink_t = $typefrom(env::X86_64 ? ulong.typeid : CUInt.typeid);
 def Dev_t = ulong;
 def Ino_t = ulong;
 def Mode_t = ushort;
-//def Off_t = long;
 def Blkcnt_t = long;
 def Fflags_t = uint;
-
-struct Timespec
-{
-	isz tv_sec;
-	isz tv_nsec;
-}
 
 struct Stat @if(env::X86_64)
 {
@@ -28,10 +21,10 @@ struct Stat @if(env::X86_64)
 	Gid_t st_gid;
 	int __pad1;
 	Dev_t st_rdev;
-	Timespec st_atime;
-	Timespec st_mtime;
-	Timespec st_ctime;
-	Timespec st_birthtime;
+	TimeSpec st_atime;
+	TimeSpec st_mtime;
+	TimeSpec st_ctime;
+	TimeSpec st_birthtime;
 	Off_t st_size;
 	Blkcnt_t st_blocks;
 	Blksize_t st_blksize;
